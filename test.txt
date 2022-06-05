@@ -1,0 +1,138 @@
+//Para iniciar con el programa importamos todas las librerías necesarias para trabajar
+//Importaremos fstream debido a que estamos trabajando con archivos externos.
+#include <iostream>
+#include <fstream>
+#include <string>
+
+using namespace std;
+
+//Primeramente tenemos la función para la Suma Iterativa
+int sumaIterativa (int arreglo[],int n){
+    cout<<"Las sumatorias de los elementos son: "<<endl;
+    //Definimos la variable que nos dará los resultados como "long long" debido a que unos
+    //de los archivos tienen números muy grandes, esto hará que el programa realice las operaciones
+    //más facilmente
+    long long sumIter = 0;
+    //Este if hace que la precondición se cumpla antes de ejecutar el for loop
+    if (n>0){
+        //Este for loop ralizará las iteraciones de la sumatoria para cada elemento del archivo
+        for (int i=0;i<n;i++){
+            //Esta variable almacena el resultado de la sumatoria del elementeo "i" del arreglo
+            sumIter = (arreglo[i]*(arreglo[i]+1))/2;
+            //El cout imprimirá primeramente la posición del elemento, seguido del valor y posteriormente
+            //el valor de la sumatoria, esto para que se sepa a que valor pertenece cada resultado.
+            cout<<i+1<<".- "<<arreglo[i]<<" sumatoria = "<<sumIter<<endl;
+        }
+        //El return termina el programa y regresa al main
+        return -1;
+    }
+}
+//Aquí tenemos la función para la suma recursiva
+int sumaRecursiva (int arreglo[], int n, int i){
+    //Este if hace que se cumpla la precondición, además de hacer que sea posible la recursividad.
+    if (n>0 && i<n){
+        //Nuevamente, se define la variable que almacenará los resultados de la sumatoria como "long long"
+        long long sumRec = (arreglo[i]*(arreglo[i]+1))/2;
+        //El cout imprimirá primeramente la posicián del elemento, seguido del valor y posteriormente
+        //el valor de la sumatoria, esto para que se sepa a que valor pertenece cada resultado.
+        cout<<i+1<<".- "<<arreglo[i]<<" sumatoria = "<<sumRec<<endl;
+        //Incrementamos el valor de "i" en 1 para que en la siguiente recursividad el programa trate con el siguiente elemento.
+        i++;
+        //Aquí ocurre la recursividad, añadiendo el nuevo valor de "i" para trabajar con el siguiente elemento.
+        return sumaRecursiva(arreglo,n,i);
+    }
+    //El else se ejecutará cuando la "i" alcance al número de elementos del arreglo, terminando la recursividad.
+    else{
+        return -1;
+    }
+}
+//Aquí tenemos la función para la suma directa.
+int sumaDirecta (int n){
+    //If que nos ayuda a cumplir la precondición
+    if (n>0){
+        //Definimos la variable que nos dará el resultado de la sumatoria directa
+        int sumDir = (n*(n+1))/2;
+        //Este return hará que el valor de la sumatoria regrese para que se imprima en la funicón que mandó llamar a esta.
+        return sumDir;
+    }
+}
+//Función que mandará llamar a la Suma Iterativa
+void ejecutarSumaIterativa(){
+    cout << "*********************************************************" << endl;
+    //Leemos el archivo con el que querramos trabajar.
+    //Debido a que solo podemos trabajar con 1 a la vez, tendrá que quitar los comentarios del archivo
+    //que quiera utilizar y poner en comentarios todos los demás.
+    //Aclaro que el archivo "4.in" le da problemas al programa, tanto el la suma iterativa como recursiva
+    //algunos números arrojan valores negativos, desconozco la razón de esto.
+    ifstream in("1.in");
+    //ifstream in("2.in");
+    //ifstream in("3.in");
+    //ifstream in("4.in");
+
+    //Construimos un arreglo con los valores que nos da el archivo
+    string s;
+    getline(in, s);
+    int n = stoi(s);
+    int *arreglo = new int[n];
+    int i = 0;
+    while(getline(in, s)){
+        arreglo[i] = stoi(s);
+        i++;
+    }
+    //Esta variable manda llamar a la función que ejecutará la suma iterativa
+    int suma = sumaIterativa(arreglo, n);
+}
+//Esta función mandará llamar a la función de la suma recursiva
+void ejecutarSumaRecursiva(){
+    //Leemos el archivo con el que querramos trabajar.
+    //Debido a que solo podemos trabajar con 1 a la vez, tendrá que quitar los comentarios del archivo
+    //que quiera utilizar y poner en comentarios todos los demás.
+    //Aclaro que el archivo "4.in" le da problemas al programa, tanto el la suma iterativa como recursiva
+    //algunos números arrojan valores negativos, desconozco la razón de esto.
+    ifstream in("1.in");
+    //ifstream in("2.in");
+    //ifstream in("3.in");
+    //ifstream in("4.in");
+
+    //Construimos un arreglo con los valores que nos da el archivo
+    string s;
+    getline(in, s);
+    int n = stoi(s);
+
+    int *arreglo = new int[n];
+    int i = 0;
+    while(getline(in, s)){
+        arreglo[i] = stoi(s);
+        i++;
+    }
+    //Esta variable manda llamar a la función que ejecutará la suma recursiva
+    int suma = sumaRecursiva(arreglo, n,0);
+}
+//Esta función mandará llamar a la función que calculará la sumatoria directa.
+void ejecutarSumaDirecta (){
+    //Definimos la variable que el usuario podrá ingresar para calcular la sumatoria
+    int N;
+    cout << "Ingrese hasta que numero n quiere sumar";
+    cin >> N;
+    //mandamos llamar a la función para calcular la sumatoria.
+    int suma = sumaDirecta(N);
+    //El cout imprime la solución de la sumatoria.
+    cout << "La sumatoria del numero es: " << suma << endl;
+}
+//Aquí tenemos nuestro main
+int main(){
+    //Indicamos que empezaremos con la suma iterativa y mandamos llamar a la función para la iterativa
+    cout << "*********************************************************" << endl;
+    cout << "Suma Iterativa" << endl;
+    ejecutarSumaIterativa();
+    //Indicamos que eseguiremos con la suma recursiva y mandamos llamar a la función para la recursiva
+    cout << "*********************************************************" << endl;
+    cout << "Suma Recursiva" << endl;
+    ejecutarSumaRecursiva();
+    //Indicamos que terminaremos con la suma directa y mandamos llamar a la función para la directa
+    cout << "*********************************************************" << endl;
+    cout << "Suma Directa" << endl;
+    ejecutarSumaDirecta();
+    //El return 0 termina el programa.
+    return 0;
+}

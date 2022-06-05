@@ -1,0 +1,151 @@
+
+<!DOCTYPE html>
+    <html>
+    <head>
+        <link href="https://allfont.es/allfont.css?fonts=lucida-console" rel="stylesheet" type="text/css" />
+        <meta charset="UTF-8">
+        <title> Analizador de Sintaxis </title>
+        <link rel="stylesheet" href="formato.css">
+    </head>
+    <body>
+	<p><span class='comentario'>//Para iniciar con el programa importamos todas las librerías necesarias para trabajar</span></p>
+<p><span class='comentario'>//Importaremos fstream debido a que estamos trabajando con archivos externos.</span></p>
+<p><span class='operador'>#</span><span class='variable'>include</span> <span class='operador'><</span><span class='variable'>iostream</span><span class='operador'>></span></p>
+<p><span class='operador'>#</span><span class='variable'>include</span> <span class='operador'><</span><span class='variable'>fstream</span><span class='operador'>></span></p>
+<p><span class='operador'>#</span><span class='variable'>include</span> <span class='operador'><</span><span class='variable'>string</span><span class='operador'>></span></p>
+<p></p>
+<p><span class='palabra_reservada'>using</span> <span class='palabra_reservada'>namespace</span> <span class='variable'>std</span><span class='operador'>;</span></p>
+<p></p>
+<p><span class='comentario'>//Primeramente tenemos la función para la Suma Iterativa</span></p>
+<p><span class='palabra_reservada'>int</span> <span class='variable'>sumaIterativa</span> <span class='operador'>(</span><span class='palabra_reservada'>int</span> <span class='variable'>arreglo</span><span class='operador'>[</span><span class='operador'>]</span><span class='operador'>,</span><span class='palabra_reservada'>int</span> <span class='variable'>n</span><span class='operador'>)</span><span class='operador'>{</span></p>
+<p><span class='tab'></span> <span  class='numero'>1cout</span><span class='operador'><</span><span class='operador'><</span><span class='string'>"Las sumatorias de los elementos son: </span><span class='operador'><</span><span class='operador'><</span><span class='variable'>endl</span><span class='operador'>;</span></p>
+<p><span class='tab'></span> <span class='comentario'>//Definimos la variable que nos dará los resultados como "long long" debido a que unos</span></p>
+<p><span class='tab'></span> <span class='comentario'>//de los archivos tienen números muy grandes, esto hará que el programa realice las operaciones</span></p>
+<p><span class='tab'></span> <span class='comentario'>//más facilmente</span></p>
+<p><span class='tab'></span> <span class='palabra_reservada'>long</span> <span class='palabra_reservada'>long</span> <span class='variable'>sumIter</span> <span class='operador'>=</span> <span  class='numero'>0</span><span class='operador'>;</span></p>
+<p><span class='tab'></span> <span class='comentario'>//Este if hace que la precondición se cumpla antes de ejecutar el for loop</span></p>
+<p><span class='tab'></span> <span class='palabra_reservada'>if</span> <span class='operador'>(</span><span class='variable'>n</span><span class='operador'>></span><span  class='numero'>0</span><span class='operador'>)</span><span class='operador'>{</span></p>
+<p><span class='tab'></span><span class='tab'></span> <span class='comentario'>//Este for loop ralizará las iteraciones de la sumatoria para cada elemento del archivo</span></p>
+<p><span class='tab'></span><span class='tab'></span> <span class='palabra_reservada'>for</span> <span class='operador'>(</span><span class='palabra_reservada'>int</span> <span class='variable'>i</span><span class='operador'>=</span><span  class='numero'>0</span><span class='operador'>;</span><span class='variable'>i</span><span class='operador'><</span><span class='variable'>n</span><span class='operador'>;</span><span class='variable'>i</span><span class='operador'>+</span><span class='operador'>+</span><span class='operador'>)</span><span class='operador'>{</span></p>
+<p><span class='tab'></span><span class='tab'></span><span class='tab'></span> <span class='comentario'>//Esta variable almacena el resultado de la sumatoria del elementeo "i" del arreglo</span></p>
+<p><span class='tab'></span><span class='tab'></span><span class='tab'></span> <span class='variable'>sumIter</span> <span class='operador'>=</span> <span class='operador'>(</span><span class='variable'>arreglo</span><span class='operador'>[</span><span class='variable'>i</span><span class='operador'>]</span><span class='operador'>*</span><span class='operador'>(</span><span class='variable'>arreglo</span><span class='operador'>[</span><span class='variable'>i</span><span class='operador'>]</span><span class='operador'>+</span><span  class='numero'>1</span><span class='operador'>)</span><span class='operador'>)</span><span class='operador'>/</span><span  class='numero'>2</span><span class='operador'>;</span></p>
+<p><span class='tab'></span><span class='tab'></span><span class='tab'></span> <span class='comentario'>//El cout imprimirá primeramente la posición del elemento, seguido del valor y posteriormente</span></p>
+<p><span class='tab'></span><span class='tab'></span><span class='tab'></span> <span class='comentario'>//el valor de la sumatoria, esto para que se sepa a que valor pertenece cada resultado.</span></p>
+<p><span class='tab'></span><span class='tab'></span><span class='tab'></span> <span class='variable'>cout</span><span class='operador'><</span><span class='operador'><</span><span class='variable'>i</span><span class='operador'>+</span><span  class='numero'>1</span><span class='operador'><</span><span class='operador'><</span><span class='string'>".- </span><span class='operador'><</span><span class='operador'><</span><span class='variable'>arreglo</span><span class='operador'>[</span><span class='variable'>i</span><span class='operador'>]</span><span class='operador'><</span><span class='operador'><</span><span class='string'>" sumatoria = </span><span class='operador'><</span><span class='operador'><</span><span class='variable'>sumIter</span><span class='operador'><</span><span class='operador'><</span><span class='variable'>endl</span><span class='operador'>;</span></p>
+<p><span class='tab'></span><span class='tab'></span> <span class='operador'>}</span></p>
+<p><span class='tab'></span><span class='tab'></span> <span class='comentario'>//El return termina el programa y regresa al main</span></p>
+<p><span class='tab'></span><span class='tab'></span> <span class='palabra_reservada'>return</span> <span class='operador'>-</span><span  class='numero'>1</span><span class='operador'>;</span></p>
+<p><span class='tab'></span> <span class='operador'>}</span></p>
+<p><span class='operador'>}</span></p>
+<p><span class='comentario'>//Aquí tenemos la función para la suma recursiva</span></p>
+<p><span class='palabra_reservada'>int</span> <span class='variable'>sumaRecursiva</span> <span class='operador'>(</span><span class='palabra_reservada'>int</span> <span class='variable'>arreglo</span><span class='operador'>[</span><span class='operador'>]</span><span class='operador'>,</span> <span class='palabra_reservada'>int</span> <span class='variable'>n</span><span class='operador'>,</span> <span class='palabra_reservada'>int</span> <span class='variable'>i</span><span class='operador'>)</span><span class='operador'>{</span></p>
+<p><span class='tab'></span> <span class='comentario'>//Este if hace que se cumpla la precondición, además de hacer que sea posible la recursividad.</span></p>
+<p><span class='tab'></span> <span class='palabra_reservada'>if</span> <span class='operador'>(</span><span class='variable'>n</span><span class='operador'>></span><span  class='numero'>0</span>  <span class='variable'>i</span><span class='operador'><</span><span class='variable'>n</span><span class='operador'>)</span><span class='operador'>{</span></p>
+<p><span class='tab'></span><span class='tab'></span> <span class='comentario'>//Nuevamente, se define la variable que almacenará los resultados de la sumatoria como "long long"</span></p>
+<p><span class='tab'></span><span class='tab'></span> <span class='palabra_reservada'>long</span> <span class='palabra_reservada'>long</span> <span class='variable'>sumRec</span> <span class='operador'>=</span> <span class='operador'>(</span><span class='variable'>arreglo</span><span class='operador'>[</span><span class='variable'>i</span><span class='operador'>]</span><span class='operador'>*</span><span class='operador'>(</span><span class='variable'>arreglo</span><span class='operador'>[</span><span class='variable'>i</span><span class='operador'>]</span><span class='operador'>+</span><span  class='numero'>1</span><span class='operador'>)</span><span class='operador'>)</span><span class='operador'>/</span><span  class='numero'>2</span><span class='operador'>;</span></p>
+<p><span class='tab'></span><span class='tab'></span> <span class='comentario'>//El cout imprimirá primeramente la posicián del elemento, seguido del valor y posteriormente</span></p>
+<p><span class='tab'></span><span class='tab'></span> <span class='comentario'>//el valor de la sumatoria, esto para que se sepa a que valor pertenece cada resultado.</span></p>
+<p><span class='tab'></span><span class='tab'></span> <span class='variable'>cout</span><span class='operador'><</span><span class='operador'><</span><span class='variable'>i</span><span class='operador'>+</span><span  class='numero'>1</span><span class='operador'><</span><span class='operador'><</span><span class='string'>".- </span><span class='operador'><</span><span class='operador'><</span><span class='variable'>arreglo</span><span class='operador'>[</span><span class='variable'>i</span><span class='operador'>]</span><span class='operador'><</span><span class='operador'><</span><span class='string'>" sumatoria = </span><span class='operador'><</span><span class='operador'><</span><span class='variable'>sumRec</span><span class='operador'><</span><span class='operador'><</span><span class='variable'>endl</span><span class='operador'>;</span></p>
+<p><span class='tab'></span><span class='tab'></span> <span class='comentario'>//Incrementamos el valor de "i" en 1 para que en la siguiente recursividad el programa trate con el siguiente elemento.</span></p>
+<p><span class='tab'></span><span class='tab'></span> <span class='variable'>i</span><span class='operador'>+</span><span class='operador'>+</span><span class='operador'>;</span></p>
+<p><span class='tab'></span><span class='tab'></span> <span class='comentario'>//Aquí ocurre la recursividad, añadiendo el nuevo valor de "i" para trabajar con el siguiente elemento.</span></p>
+<p><span class='tab'></span><span class='tab'></span> <span class='palabra_reservada'>return</span> <span class='variable'>sumaRecursiva</span><span class='operador'>(</span><span class='variable'>arreglo</span><span class='operador'>,</span><span class='variable'>n</span><span class='operador'>,</span><span class='variable'>i</span><span class='operador'>)</span><span class='operador'>;</span></p>
+<p><span class='tab'></span> <span class='operador'>}</span></p>
+<p><span class='tab'></span> <span class='comentario'>//El else se ejecutará cuando la "i" alcance al número de elementos del arreglo, terminando la recursividad.</span></p>
+<p><span class='tab'></span> <span class='palabra_reservada'>else</span><span class='operador'>{</span></p>
+<p><span class='tab'></span><span class='tab'></span> <span class='palabra_reservada'>return</span> <span class='operador'>-</span><span  class='numero'>1</span><span class='operador'>;</span></p>
+<p><span class='tab'></span> <span class='operador'>}</span></p>
+<p><span class='operador'>}</span></p>
+<p><span class='comentario'>//Aquí tenemos la función para la suma directa.</span></p>
+<p><span class='palabra_reservada'>int</span> <span class='variable'>sumaDirecta</span> <span class='operador'>(</span><span class='palabra_reservada'>int</span> <span class='variable'>n</span><span class='operador'>)</span><span class='operador'>{</span></p>
+<p><span class='tab'></span> <span class='comentario'>//If que nos ayuda a cumplir la precondición</span></p>
+<p><span class='tab'></span> <span class='palabra_reservada'>if</span> <span class='operador'>(</span><span class='variable'>n</span><span class='operador'>></span><span  class='numero'>0</span><span class='operador'>)</span><span class='operador'>{</span></p>
+<p><span class='tab'></span><span class='tab'></span> <span class='comentario'>//Definimos la variable que nos dará el resultado de la sumatoria directa</span></p>
+<p><span class='tab'></span><span class='tab'></span> <span class='palabra_reservada'>int</span> <span class='variable'>sumDir</span> <span class='operador'>=</span> <span class='operador'>(</span><span class='variable'>n</span><span class='operador'>*</span><span class='operador'>(</span><span class='variable'>n</span><span class='operador'>+</span><span  class='numero'>1</span><span class='operador'>)</span><span class='operador'>)</span><span class='operador'>/</span><span  class='numero'>2</span><span class='operador'>;</span></p>
+<p><span class='tab'></span><span class='tab'></span> <span class='comentario'>//Este return hará que el valor de la sumatoria regrese para que se imprima en la funicón que mandó llamar a esta.</span></p>
+<p><span class='tab'></span><span class='tab'></span> <span class='palabra_reservada'>return</span> <span class='variable'>sumDir</span><span class='operador'>;</span></p>
+<p><span class='tab'></span> <span class='operador'>}</span></p>
+<p><span class='operador'>}</span></p>
+<p><span class='comentario'>//Función que mandará llamar a la Suma Iterativa</span></p>
+<p><span class='palabra_reservada'>void</span> <span class='variable'>ejecutarSumaIterativa</span><span class='operador'>(</span><span class='operador'>)</span><span class='operador'>{</span></p>
+<p><span class='tab'></span> <span class='variable'>cout</span> <span class='operador'><</span><span class='operador'><</span> <span class='string'>"*********************************************************</span> <span class='operador'><</span><span class='operador'><</span> <span class='variable'>endl</span><span class='operador'>;</span></p>
+<p><span class='tab'></span> <span class='comentario'>//Leemos el archivo con el que querramos trabajar.</span></p>
+<p><span class='tab'></span> <span class='comentario'>//Debido a que solo podemos trabajar con 1 a la vez, tendrá que quitar los comentarios del archivo</span></p>
+<p><span class='tab'></span> <span class='comentario'>//que quiera utilizar y poner en comentarios todos los demás.</span></p>
+<p><span class='tab'></span> <span class='comentario'>//Aclaro que el archivo "4.in" le da problemas al programa, tanto el la suma iterativa como recursiva</span></p>
+<p><span class='tab'></span> <span class='comentario'>//algunos números arrojan valores negativos, desconozco la razón de esto.</span></p>
+<p><span class='tab'></span> <span class='variable'>ifstream</span> <span class='variable'>in</span><span class='operador'>(</span><span class='string'>"1.in</span><span class='operador'>)</span><span class='operador'>;</span></p>
+<p><span class='tab'></span> <span class='comentario'>//ifstream in("2.in");</span></p>
+<p><span class='tab'></span> <span class='comentario'>//ifstream in("3.in");</span></p>
+<p><span class='tab'></span> <span class='comentario'>//ifstream in("4.in");</span></p>
+<p></p>
+<p><span class='tab'></span> <span class='comentario'>//Construimos un arreglo con los valores que nos da el archivo</span></p>
+<p><span class='tab'></span> <span class='variable'>string</span> <span class='variable'>s</span><span class='operador'>;</span></p>
+<p><span class='tab'></span> <span class='variable'>getline</span><span class='operador'>(</span><span class='variable'>in</span><span class='operador'>,</span> <span class='variable'>s</span><span class='operador'>)</span><span class='operador'>;</span></p>
+<p><span class='tab'></span> <span class='palabra_reservada'>int</span> <span class='variable'>n</span> <span class='operador'>=</span> <span class='variable'>stoi</span><span class='operador'>(</span><span class='variable'>s</span><span class='operador'>)</span><span class='operador'>;</span></p>
+<p><span class='tab'></span> <span class='palabra_reservada'>int</span> <span class='operador'>*</span><span class='variable'>arreglo</span> <span class='operador'>=</span> <span class='palabra_reservada'>new</span> <span class='palabra_reservada'>int</span><span class='operador'>[</span><span class='variable'>n</span><span class='operador'>]</span><span class='operador'>;</span></p>
+<p><span class='tab'></span> <span class='palabra_reservada'>int</span> <span class='variable'>i</span> <span class='operador'>=</span> <span  class='numero'>0</span><span class='operador'>;</span></p>
+<p><span class='tab'></span> <span class='palabra_reservada'>while</span><span class='operador'>(</span><span class='variable'>getline</span><span class='operador'>(</span><span class='variable'>in</span><span class='operador'>,</span> <span class='variable'>s</span><span class='operador'>)</span><span class='operador'>)</span><span class='operador'>{</span></p>
+<p><span class='tab'></span><span class='tab'></span> <span class='variable'>arreglo</span><span class='operador'>[</span><span class='variable'>i</span><span class='operador'>]</span> <span class='operador'>=</span> <span class='variable'>stoi</span><span class='operador'>(</span><span class='variable'>s</span><span class='operador'>)</span><span class='operador'>;</span></p>
+<p><span class='tab'></span><span class='tab'></span> <span class='variable'>i</span><span class='operador'>+</span><span class='operador'>+</span><span class='operador'>;</span></p>
+<p><span class='tab'></span> <span class='operador'>}</span></p>
+<p><span class='tab'></span> <span class='comentario'>//Esta variable manda llamar a la función que ejecutará la suma iterativa</span></p>
+<p><span class='tab'></span> <span class='palabra_reservada'>int</span> <span class='variable'>suma</span> <span class='operador'>=</span> <span class='variable'>sumaIterativa</span><span class='operador'>(</span><span class='variable'>arreglo</span><span class='operador'>,</span> <span class='variable'>n</span><span class='operador'>)</span><span class='operador'>;</span></p>
+<p><span class='operador'>}</span></p>
+<p><span class='comentario'>//Esta función mandará llamar a la función de la suma recursiva</span></p>
+<p><span class='palabra_reservada'>void</span> <span class='variable'>ejecutarSumaRecursiva</span><span class='operador'>(</span><span class='operador'>)</span><span class='operador'>{</span></p>
+<p><span class='tab'></span> <span class='comentario'>//Leemos el archivo con el que querramos trabajar.</span></p>
+<p><span class='tab'></span> <span class='comentario'>//Debido a que solo podemos trabajar con 1 a la vez, tendrá que quitar los comentarios del archivo</span></p>
+<p><span class='tab'></span> <span class='comentario'>//que quiera utilizar y poner en comentarios todos los demás.</span></p>
+<p><span class='tab'></span> <span class='comentario'>//Aclaro que el archivo "4.in" le da problemas al programa, tanto el la suma iterativa como recursiva</span></p>
+<p><span class='tab'></span> <span class='comentario'>//algunos números arrojan valores negativos, desconozco la razón de esto.</span></p>
+<p><span class='tab'></span> <span class='variable'>ifstream</span> <span class='variable'>in</span><span class='operador'>(</span><span class='string'>"1.in</span><span class='operador'>)</span><span class='operador'>;</span></p>
+<p><span class='tab'></span> <span class='comentario'>//ifstream in("2.in");</span></p>
+<p><span class='tab'></span> <span class='comentario'>//ifstream in("3.in");</span></p>
+<p><span class='tab'></span> <span class='comentario'>//ifstream in("4.in");</span></p>
+<p></p>
+<p><span class='tab'></span> <span class='comentario'>//Construimos un arreglo con los valores que nos da el archivo</span></p>
+<p><span class='tab'></span> <span class='variable'>string</span> <span class='variable'>s</span><span class='operador'>;</span></p>
+<p><span class='tab'></span> <span class='variable'>getline</span><span class='operador'>(</span><span class='variable'>in</span><span class='operador'>,</span> <span class='variable'>s</span><span class='operador'>)</span><span class='operador'>;</span></p>
+<p><span class='tab'></span> <span class='palabra_reservada'>int</span> <span class='variable'>n</span> <span class='operador'>=</span> <span class='variable'>stoi</span><span class='operador'>(</span><span class='variable'>s</span><span class='operador'>)</span><span class='operador'>;</span></p>
+<p></p>
+<p><span class='tab'></span> <span class='palabra_reservada'>int</span> <span class='operador'>*</span><span class='variable'>arreglo</span> <span class='operador'>=</span> <span class='palabra_reservada'>new</span> <span class='palabra_reservada'>int</span><span class='operador'>[</span><span class='variable'>n</span><span class='operador'>]</span><span class='operador'>;</span></p>
+<p><span class='tab'></span> <span class='palabra_reservada'>int</span> <span class='variable'>i</span> <span class='operador'>=</span> <span  class='numero'>0</span><span class='operador'>;</span></p>
+<p><span class='tab'></span> <span class='palabra_reservada'>while</span><span class='operador'>(</span><span class='variable'>getline</span><span class='operador'>(</span><span class='variable'>in</span><span class='operador'>,</span> <span class='variable'>s</span><span class='operador'>)</span><span class='operador'>)</span><span class='operador'>{</span></p>
+<p><span class='tab'></span><span class='tab'></span> <span class='variable'>arreglo</span><span class='operador'>[</span><span class='variable'>i</span><span class='operador'>]</span> <span class='operador'>=</span> <span class='variable'>stoi</span><span class='operador'>(</span><span class='variable'>s</span><span class='operador'>)</span><span class='operador'>;</span></p>
+<p><span class='tab'></span><span class='tab'></span> <span class='variable'>i</span><span class='operador'>+</span><span class='operador'>+</span><span class='operador'>;</span></p>
+<p><span class='tab'></span> <span class='operador'>}</span></p>
+<p><span class='tab'></span> <span class='comentario'>//Esta variable manda llamar a la función que ejecutará la suma recursiva</span></p>
+<p><span class='tab'></span> <span class='palabra_reservada'>int</span> <span class='variable'>suma</span> <span class='operador'>=</span> <span class='variable'>sumaRecursiva</span><span class='operador'>(</span><span class='variable'>arreglo</span><span class='operador'>,</span> <span class='variable'>n</span><span class='operador'>,</span><span  class='numero'>0</span><span class='operador'>)</span><span class='operador'>;</span></p>
+<p><span class='operador'>}</span></p>
+<p><span class='comentario'>//Esta función mandará llamar a la función que calculará la sumatoria directa.</span></p>
+<p><span class='palabra_reservada'>void</span> <span class='variable'>ejecutarSumaDirecta</span> <span class='operador'>(</span><span class='operador'>)</span><span class='operador'>{</span></p>
+<p><span class='tab'></span> <span class='comentario'>//Definimos la variable que el usuario podrá ingresar para calcular la sumatoria</span></p>
+<p><span class='tab'></span> <span class='palabra_reservada'>int</span> <span class='variable'>N</span><span class='operador'>;</span></p>
+<p><span class='tab'></span> <span class='variable'>cout</span> <span class='operador'><</span><span class='operador'><</span> <span class='string'>"Ingrese hasta que numero n quiere sumar</span><span class='operador'>;</span></p>
+<p><span class='tab'></span> <span class='variable'>cin</span> <span class='operador'>></span><span class='operador'>></span> <span class='variable'>N</span><span class='operador'>;</span></p>
+<p><span class='tab'></span> <span class='comentario'>//mandamos llamar a la función para calcular la sumatoria.</span></p>
+<p><span class='tab'></span> <span class='palabra_reservada'>int</span> <span class='variable'>suma</span> <span class='operador'>=</span> <span class='variable'>sumaDirecta</span><span class='operador'>(</span><span class='variable'>N</span><span class='operador'>)</span><span class='operador'>;</span></p>
+<p><span class='tab'></span> <span class='comentario'>//El cout imprime la solución de la sumatoria.</span></p>
+<p><span class='tab'></span> <span class='variable'>cout</span> <span class='operador'><</span><span class='operador'><</span> <span class='string'>"La sumatoria del numero es: </span> <span class='operador'><</span><span class='operador'><</span> <span class='variable'>suma</span> <span class='operador'><</span><span class='operador'><</span> <span class='variable'>endl</span><span class='operador'>;</span></p>
+<p><span class='operador'>}</span></p>
+<p><span class='comentario'>//Aquí tenemos nuestro main</span></p>
+<p><span class='palabra_reservada'>int</span> <span class='variable'>main</span><span class='operador'>(</span><span class='operador'>)</span><span class='operador'>{</span></p>
+<p><span class='tab'></span> <span class='comentario'>//Indicamos que empezaremos con la suma iterativa y mandamos llamar a la función para la iterativa</span></p>
+<p><span class='tab'></span> <span class='variable'>cout</span> <span class='operador'><</span><span class='operador'><</span> <span class='string'>"*********************************************************</span> <span class='operador'><</span><span class='operador'><</span> <span class='variable'>endl</span><span class='operador'>;</span></p>
+<p><span class='tab'></span> <span class='variable'>cout</span> <span class='operador'><</span><span class='operador'><</span> <span class='string'>"Suma Iterativa</span> <span class='operador'><</span><span class='operador'><</span> <span class='variable'>endl</span><span class='operador'>;</span></p>
+<p><span class='tab'></span> <span class='variable'>ejecutarSumaIterativa</span><span class='operador'>(</span><span class='operador'>)</span><span class='operador'>;</span></p>
+<p><span class='tab'></span> <span class='comentario'>//Indicamos que eseguiremos con la suma recursiva y mandamos llamar a la función para la recursiva</span></p>
+<p><span class='tab'></span> <span class='variable'>cout</span> <span class='operador'><</span><span class='operador'><</span> <span class='string'>"*********************************************************</span> <span class='operador'><</span><span class='operador'><</span> <span class='variable'>endl</span><span class='operador'>;</span></p>
+<p><span class='tab'></span> <span class='variable'>cout</span> <span class='operador'><</span><span class='operador'><</span> <span class='string'>"Suma Recursiva</span> <span class='operador'><</span><span class='operador'><</span> <span class='variable'>endl</span><span class='operador'>;</span></p>
+<p><span class='tab'></span> <span class='variable'>ejecutarSumaRecursiva</span><span class='operador'>(</span><span class='operador'>)</span><span class='operador'>;</span></p>
+<p><span class='tab'></span> <span class='comentario'>//Indicamos que terminaremos con la suma directa y mandamos llamar a la función para la directa</span></p>
+<p><span class='tab'></span> <span class='variable'>cout</span> <span class='operador'><</span><span class='operador'><</span> <span class='string'>"*********************************************************</span> <span class='operador'><</span><span class='operador'><</span> <span class='variable'>endl</span><span class='operador'>;</span></p>
+<p><span class='tab'></span> <span class='variable'>cout</span> <span class='operador'><</span><span class='operador'><</span> <span class='string'>"Suma Directa</span> <span class='operador'><</span><span class='operador'><</span> <span class='variable'>endl</span><span class='operador'>;</span></p>
+<p><span class='tab'></span> <span class='variable'>ejecutarSumaDirecta</span><span class='operador'>(</span><span class='operador'>)</span><span class='operador'>;</span></p>
+<p><span class='tab'></span> <span class='comentario'>//El return 0 termina el programa.</span></p>
+<p><span class='tab'></span> <span class='palabra_reservada'>return</span> <span  class='numero'>0</span><span class='operador'>;</span></p>
+<p><span class='operador'>}</span></p>
+
+	</body>
+	</html>
