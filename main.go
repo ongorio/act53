@@ -78,6 +78,21 @@ func stringInSlice(element string, slice []string) bool {
 	return false
 }
 
+func iterativeLexer(sourceFile string, resultFile string) {
+	file, err := os.Open(sourceFile)
+	resFile, err2 := os.Create(resultFile)
+
+	defer file.Close()
+	defer resFile.Close()
+
+	if err != nil || err2 != nil {
+		os.Exit(1)
+	}
+
+	resFile.WriteString(initialString)
+
+}
+
 func main() {
 
 	file, err := os.Open("./test.txt")
